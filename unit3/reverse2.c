@@ -5,7 +5,6 @@
 int main(void) {
 	char s[1024];
 
-	// read a token (number) from stdin
 	if (scanf("%1023s", s) != 1) {
 		return 0;
 	}
@@ -14,14 +13,12 @@ int main(void) {
 	char *p = s;
 	int len = (int)strlen(s);
 
-	// handle optional leading sign
 	if (s[0] == '-') {
 		neg = 1;
 		p = s + 1;
 		len -= 1;
 	}
 
-	// reverse the digits in-place using pointers
 	char *start = p;
 	char *end = p + len - 1;
 	while (start < end) {
@@ -32,7 +29,6 @@ int main(void) {
 		end--;
 	}
 
-	// print sign if any, then reversed digits
 	if (neg) putchar('-');
 	printf("%s\n", p);
 

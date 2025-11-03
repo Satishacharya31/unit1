@@ -18,9 +18,11 @@ int main()
      for(i=0;i<n;i++) {
     printf("Enter the details of book %d \n", i+1);
     printf("Title of book: ");
-    scanf("%s",b[i].title);
+    getchar();
+    scanf("%[^\n]s",b[i].title);
     printf("Author of book: ");
-    scanf("%s",b[i].author);
+    getchar();
+    scanf("%[^\n]s",b[i].author);
     printf("Price of book: ");
     scanf("%f",&b[i].price);
     printf("pages of book: ");
