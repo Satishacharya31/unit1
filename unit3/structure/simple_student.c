@@ -1,18 +1,40 @@
 #include <stdio.h>
 
-#define N 5
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
 
-typedef struct { int rollNo; char name[50]; float marks; } Student;
+int main() {
+    struct Student students[5];
+    int i, topIndex = 0;
 
-int main(void) {
-	Student s[N];
-	for (int i = 0; i < N; ++i) {
-		/* Input: roll name marks (name without spaces) */
-		if (scanf("%d %49s %f", &s[i].rollNo, s[i].name, &s[i].marks) != 3) return 0;
-	}
-	int idx = 0;
-	for (int i = 1; i < N; ++i) if (s[i].marks > s[idx].marks) idx = i;
-	printf("Top student: %d %s %.2f\n", s[idx].rollNo, s[idx].name, s[idx].marks);
-	return 0;
+    // Input for 5 students
+    for (i = 0; i < 5; i++) {
+        printf("\nEnter details for student %d\n", i + 1);
+        printf("Roll Number: ");
+        scanf("%d", &students[i].rollNo);
+
+        printf("Name: ");
+        scanf(" %[^\n]", students[i].name);  // Reads string with spaces
+
+        printf("Marks: ");
+        scanf("%f", &students[i].marks);
+    }
+
+    // Find student with highest marks
+    for (i = 1; i < 5; i++) {
+        if (students[i].marks > students[topIndex].marks) {
+            topIndex = i;
+        }
+    }
+
+    // Display student with highest marks
+    printf("\n--- Student with Highest Marks ---\n");
+    printf("Roll No: %d\n", students[topIndex].rollNo);
+    printf("Name: %s\n", students[topIndex].name);
+    printf("Marks: %.2f\n", students[topIndex].marks);
+
+    return 0;
 }
-
